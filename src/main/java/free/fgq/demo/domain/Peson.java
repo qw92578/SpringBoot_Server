@@ -1,18 +1,15 @@
 package free.fgq.demo.domain;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
 /**
  * 自定义配置类
  * 
  * @author Administrator
  */
-@Component
+//@Component
 public class Peson {
-	@Value("${free.fgq.name}")//从配置文件中加载
+//	@Value("${free.fgq.name}")//从配置文件中加载
 	private String name;
-	@Value("${free.fgq.age}")
+//	@Value("${free.fgq.age}")
 	private Integer age;
 
 	public String getName() {

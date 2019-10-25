@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Configuration;
  * @author Administrator
  *	使用filters用于录调用日志、排除有XSS威胁的字符、执行权限验证
  */
-@Configuration
+//@Configuration
 public class WebConfiguration {
     @Bean
     public RemoteIpFilter remoteIpFilter() {

@@ -9,6 +9,6 @@ public class HelloController {
 	@GetMapping("/index")
 	public String index() {
 		System.out.println("进入主页");
-		return null;
+		return "aaa";
 	}
 }

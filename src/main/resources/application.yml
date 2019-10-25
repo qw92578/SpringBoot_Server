@@ -1,0 +1,48 @@
+server:
+  port: 8888
+
+spring:
+  profiles:
+    active: dev
+  main:
+      allow-bean-definition-overriding: true
+
+  logging.level.org.springframework.boot.autoconfigure: ERROR
+
+security:
+
+
+---
+# 开发环境配置
+spring:
+  profiles: dev
+  datasource:
+      url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: 123456
+      driverclassName: com.mysql.cj.jdbc.Driver
+      testOnBorrow: true
+      validationQuery: select 1
+  redis:
+      database: 1
+      host:
+      port: 6379
+      max-idle: 100
+      min-idle: 5
+      max-active: 600
+      max-wait: 10000
+      timeout: 5000
+      password:
+  logging:
+      com.incubator.canvass: info
+      console:
+      path: /opt/logs/test
+  executor:
+      corePoolSize: 2
+      keepAliveSeconds: 500
+      maxPoolSize: 3
+      queueCapacity: 20
+  logback:
+      level: debug
+
+---
