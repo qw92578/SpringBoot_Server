@@ -4,5 +4,5 @@ import free.fgq.demo.common.BaseCommonResult;
 
 public interface UserService {
 
-    BaseCommonResult getUserName(Integer id);
+    BaseCommonResult getUserInfo(Integer id);
 }

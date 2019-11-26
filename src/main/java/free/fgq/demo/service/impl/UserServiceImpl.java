@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public BaseCommonResult getUserName(Integer id) {
+    public BaseCommonResult getUserInfo(Integer id) {
         BaseCommonResult baseCommonResult = new BaseCommonResult();
         try {
             User user = userDao.selectByPrimaryKey(Long.valueOf(id));

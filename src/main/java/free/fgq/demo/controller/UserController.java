@@ -26,8 +26,8 @@ public class UserController {
 	 * @param id
 	 * @return
 	 */
-	@GetMapping("/getUserName")
-	public BaseCommonResult getUserName(@RequestParam("id") Integer id) {
-		return userService.getUserName(id);
+	@GetMapping("/getUserInfo")
+	public BaseCommonResult getUserInfo(@RequestParam("id") Integer id) {
+		return userService.getUserInfo(id);
 	}
 }
