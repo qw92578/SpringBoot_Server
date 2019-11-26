@@ -1,5 +1,6 @@
 package free.fgq.demo;
 
+import free.fgq.demo.controller.UserController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,16 +13,15 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import free.fgq.demo.controller.HelloController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 
-public class HelloControllerTest {
+public class UserControllerTest {
   private MockMvc mvc;
   @Before
   public void setUp() throws Exception {
-      mvc = MockMvcBuilders.standaloneSetup(new HelloController()).build();
+      mvc = MockMvcBuilders.standaloneSetup(new UserController()).build();
   }
   @Test
   public void getIndex() throws Exception {

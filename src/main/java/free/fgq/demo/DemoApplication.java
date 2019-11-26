@@ -1,9 +1,11 @@
 package free.fgq.demo;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "free.fgq.demo")
+@MapperScan("free.fgq.demo.dao")
 public class DemoApplication {
 
 	public static void main(String[] args) {

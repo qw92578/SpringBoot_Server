@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="free.fgq.demo.dao.UserDao">
+  <resultMap id="BaseResultMap" type="free.fgq.demo.pojo.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
+    <result column="lower_name" jdbcType="VARCHAR" property="lowerName" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="passwd" jdbcType="VARCHAR" property="passwd" />
+    <result column="login_type" jdbcType="INTEGER" property="loginType" />
+    <result column="login_source" jdbcType="BIGINT" property="loginSource" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="website" jdbcType="VARCHAR" property="website" />
+    <result column="rands" jdbcType="VARCHAR" property="rands" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="created_unix" jdbcType="BIGINT" property="createdUnix" />
+    <result column="updated_unix" jdbcType="BIGINT" property="updatedUnix" />
+    <result column="last_repo_visibility" jdbcType="BIT" property="lastRepoVisibility" />
+    <result column="max_repo_creation" jdbcType="INTEGER" property="maxRepoCreation" />
+    <result column="is_active" jdbcType="BIT" property="isActive" />
+    <result column="is_admin" jdbcType="BIT" property="isAdmin" />
+    <result column="allow_git_hook" jdbcType="BIT" property="allowGitHook" />
+    <result column="allow_import_local" jdbcType="BIT" property="allowImportLocal" />
+    <result column="prohibit_login" jdbcType="BIT" property="prohibitLogin" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="avatar_email" jdbcType="VARCHAR" property="avatarEmail" />
+    <result column="use_custom_avatar" jdbcType="BIT" property="useCustomAvatar" />
+    <result column="num_followers" jdbcType="INTEGER" property="numFollowers" />
+    <result column="num_following" jdbcType="INTEGER" property="numFollowing" />
+    <result column="num_stars" jdbcType="INTEGER" property="numStars" />
+    <result column="num_repos" jdbcType="INTEGER" property="numRepos" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="num_teams" jdbcType="INTEGER" property="numTeams" />
+    <result column="num_members" jdbcType="INTEGER" property="numMembers" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_name, create_by, lower_name, name, full_name, email, passwd, login_type, 
+    login_source, login_name, type, location, website, rands, salt, created_unix, updated_unix, 
+    last_repo_visibility, max_repo_creation, is_active, is_admin, allow_git_hook, allow_import_local, 
+    prohibit_login, avatar, avatar_email, use_custom_avatar, num_followers, num_following, 
+    num_stars, num_repos, description, num_teams, num_members
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="free.fgq.demo.pojo.User">
+    insert into user (id, user_name, create_by, 
+      lower_name, name, full_name, 
+      email, passwd, login_type, 
+      login_source, login_name, type, 
+      location, website, rands, 
+      salt, created_unix, updated_unix, 
+      last_repo_visibility, max_repo_creation, is_active, 
+      is_admin, allow_git_hook, allow_import_local, 
+      prohibit_login, avatar, avatar_email, 
+      use_custom_avatar, num_followers, num_following, 
+      num_stars, num_repos, description, 
+      num_teams, num_members)
+    values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{createBy,jdbcType=TIMESTAMP}, 
+      #{lowerName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{passwd,jdbcType=VARCHAR}, #{loginType,jdbcType=INTEGER}, 
+      #{loginSource,jdbcType=BIGINT}, #{loginName,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{location,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR}, #{rands,jdbcType=VARCHAR}, 
+      #{salt,jdbcType=VARCHAR}, #{createdUnix,jdbcType=BIGINT}, #{updatedUnix,jdbcType=BIGINT}, 
+      #{lastRepoVisibility,jdbcType=BIT}, #{maxRepoCreation,jdbcType=INTEGER}, #{isActive,jdbcType=BIT}, 
+      #{isAdmin,jdbcType=BIT}, #{allowGitHook,jdbcType=BIT}, #{allowImportLocal,jdbcType=BIT}, 
+      #{prohibitLogin,jdbcType=BIT}, #{avatar,jdbcType=VARCHAR}, #{avatarEmail,jdbcType=VARCHAR}, 
+      #{useCustomAvatar,jdbcType=BIT}, #{numFollowers,jdbcType=INTEGER}, #{numFollowing,jdbcType=INTEGER}, 
+      #{numStars,jdbcType=INTEGER}, #{numRepos,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{numTeams,jdbcType=INTEGER}, #{numMembers,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="free.fgq.demo.pojo.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="lowerName != null">
+        lower_name,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="fullName != null">
+        full_name,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="passwd != null">
+        passwd,
+      </if>
+      <if test="loginType != null">
+        login_type,
+      </if>
+      <if test="loginSource != null">
+        login_source,
+      </if>
+      <if test="loginName != null">
+        login_name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="website != null">
+        website,
+      </if>
+      <if test="rands != null">
+        rands,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="createdUnix != null">
+        created_unix,
+      </if>
+      <if test="updatedUnix != null">
+        updated_unix,
+      </if>
+      <if test="lastRepoVisibility != null">
+        last_repo_visibility,
+      </if>
+      <if test="maxRepoCreation != null">
+        max_repo_creation,
+      </if>
+      <if test="isActive != null">
+        is_active,
+      </if>
+      <if test="isAdmin != null">
+        is_admin,
+      </if>
+      <if test="allowGitHook != null">
+        allow_git_hook,
+      </if>
+      <if test="allowImportLocal != null">
+        allow_import_local,
+      </if>
+      <if test="prohibitLogin != null">
+        prohibit_login,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="avatarEmail != null">
+        avatar_email,
+      </if>
+      <if test="useCustomAvatar != null">
+        use_custom_avatar,
+      </if>
+      <if test="numFollowers != null">
+        num_followers,
+      </if>
+      <if test="numFollowing != null">
+        num_following,
+      </if>
+      <if test="numStars != null">
+        num_stars,
+      </if>
+      <if test="numRepos != null">
+        num_repos,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="numTeams != null">
+        num_teams,
+      </if>
+      <if test="numMembers != null">
+        num_members,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lowerName != null">
+        #{lowerName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null">
+        #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null">
+        #{passwd,jdbcType=VARCHAR},
+      </if>
+      <if test="loginType != null">
+        #{loginType,jdbcType=INTEGER},
+      </if>
+      <if test="loginSource != null">
+        #{loginSource,jdbcType=BIGINT},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="rands != null">
+        #{rands,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="createdUnix != null">
+        #{createdUnix,jdbcType=BIGINT},
+      </if>
+      <if test="updatedUnix != null">
+        #{updatedUnix,jdbcType=BIGINT},
+      </if>
+      <if test="lastRepoVisibility != null">
+        #{lastRepoVisibility,jdbcType=BIT},
+      </if>
+      <if test="maxRepoCreation != null">
+        #{maxRepoCreation,jdbcType=INTEGER},
+      </if>
+      <if test="isActive != null">
+        #{isActive,jdbcType=BIT},
+      </if>
+      <if test="isAdmin != null">
+        #{isAdmin,jdbcType=BIT},
+      </if>
+      <if test="allowGitHook != null">
+        #{allowGitHook,jdbcType=BIT},
+      </if>
+      <if test="allowImportLocal != null">
+        #{allowImportLocal,jdbcType=BIT},
+      </if>
+      <if test="prohibitLogin != null">
+        #{prohibitLogin,jdbcType=BIT},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarEmail != null">
+        #{avatarEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="useCustomAvatar != null">
+        #{useCustomAvatar,jdbcType=BIT},
+      </if>
+      <if test="numFollowers != null">
+        #{numFollowers,jdbcType=INTEGER},
+      </if>
+      <if test="numFollowing != null">
+        #{numFollowing,jdbcType=INTEGER},
+      </if>
+      <if test="numStars != null">
+        #{numStars,jdbcType=INTEGER},
+      </if>
+      <if test="numRepos != null">
+        #{numRepos,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="numTeams != null">
+        #{numTeams,jdbcType=INTEGER},
+      </if>
+      <if test="numMembers != null">
+        #{numMembers,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="free.fgq.demo.pojo.User">
+    update user
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lowerName != null">
+        lower_name = #{lowerName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null">
+        full_name = #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null">
+        passwd = #{passwd,jdbcType=VARCHAR},
+      </if>
+      <if test="loginType != null">
+        login_type = #{loginType,jdbcType=INTEGER},
+      </if>
+      <if test="loginSource != null">
+        login_source = #{loginSource,jdbcType=BIGINT},
+      </if>
+      <if test="loginName != null">
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="rands != null">
+        rands = #{rands,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="createdUnix != null">
+        created_unix = #{createdUnix,jdbcType=BIGINT},
+      </if>
+      <if test="updatedUnix != null">
+        updated_unix = #{updatedUnix,jdbcType=BIGINT},
+      </if>
+      <if test="lastRepoVisibility != null">
+        last_repo_visibility = #{lastRepoVisibility,jdbcType=BIT},
+      </if>
+      <if test="maxRepoCreation != null">
+        max_repo_creation = #{maxRepoCreation,jdbcType=INTEGER},
+      </if>
+      <if test="isActive != null">
+        is_active = #{isActive,jdbcType=BIT},
+      </if>
+      <if test="isAdmin != null">
+        is_admin = #{isAdmin,jdbcType=BIT},
+      </if>
+      <if test="allowGitHook != null">
+        allow_git_hook = #{allowGitHook,jdbcType=BIT},
+      </if>
+      <if test="allowImportLocal != null">
+        allow_import_local = #{allowImportLocal,jdbcType=BIT},
+      </if>
+      <if test="prohibitLogin != null">
+        prohibit_login = #{prohibitLogin,jdbcType=BIT},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarEmail != null">
+        avatar_email = #{avatarEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="useCustomAvatar != null">
+        use_custom_avatar = #{useCustomAvatar,jdbcType=BIT},
+      </if>
+      <if test="numFollowers != null">
+        num_followers = #{numFollowers,jdbcType=INTEGER},
+      </if>
+      <if test="numFollowing != null">
+        num_following = #{numFollowing,jdbcType=INTEGER},
+      </if>
+      <if test="numStars != null">
+        num_stars = #{numStars,jdbcType=INTEGER},
+      </if>
+      <if test="numRepos != null">
+        num_repos = #{numRepos,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="numTeams != null">
+        num_teams = #{numTeams,jdbcType=INTEGER},
+      </if>
+      <if test="numMembers != null">
+        num_members = #{numMembers,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="free.fgq.demo.pojo.User">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=TIMESTAMP},
+      lower_name = #{lowerName,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      full_name = #{fullName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      passwd = #{passwd,jdbcType=VARCHAR},
+      login_type = #{loginType,jdbcType=INTEGER},
+      login_source = #{loginSource,jdbcType=BIGINT},
+      login_name = #{loginName,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      location = #{location,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      rands = #{rands,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      created_unix = #{createdUnix,jdbcType=BIGINT},
+      updated_unix = #{updatedUnix,jdbcType=BIGINT},
+      last_repo_visibility = #{lastRepoVisibility,jdbcType=BIT},
+      max_repo_creation = #{maxRepoCreation,jdbcType=INTEGER},
+      is_active = #{isActive,jdbcType=BIT},
+      is_admin = #{isAdmin,jdbcType=BIT},
+      allow_git_hook = #{allowGitHook,jdbcType=BIT},
+      allow_import_local = #{allowImportLocal,jdbcType=BIT},
+      prohibit_login = #{prohibitLogin,jdbcType=BIT},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      avatar_email = #{avatarEmail,jdbcType=VARCHAR},
+      use_custom_avatar = #{useCustomAvatar,jdbcType=BIT},
+      num_followers = #{numFollowers,jdbcType=INTEGER},
+      num_following = #{numFollowing,jdbcType=INTEGER},
+      num_stars = #{numStars,jdbcType=INTEGER},
+      num_repos = #{numRepos,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      num_teams = #{numTeams,jdbcType=INTEGER},
+      num_members = #{numMembers,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
