@@ -44,14 +44,7 @@ public class UserServiceImpl implements UserService {
     public BaseCommonResult getUserName(Integer id) {
         BaseCommonResult baseCommonResult = new BaseCommonResult();
         try {
-//            Map<String,Object> map = new HashMap<>();
-//            Integer i = 10;
-//            String str1 = "aaa";
-//            String str2 = new String("aaa");
-//            ConcurrentHashMap syMap = new ConcurrentHashMap();
-//            Thread thread = new Thread();
-//            thread.suspend();
-            User user = userDao.selectByPrimaryKey(1L);
+            User user = userDao.selectByPrimaryKey(Long.valueOf(id));
             UserDTO userDTO =  JSON.parseObject(JSONObject.toJSONString(user),UserDTO.class);
             baseCommonResult.setResObject(userDTO);
             baseCommonResult.success("查询用户名成功");
