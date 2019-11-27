@@ -30,4 +30,6 @@ public class UserController {
 	public BaseCommonResult getUserInfo(@RequestParam("id") Integer id) {
 		return userService.getUserInfo(id);
 	}
+
+
 }
